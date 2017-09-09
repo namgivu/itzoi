@@ -2,6 +2,10 @@ from flask import Flask
 
 app = Flask(__name__)
 
+#init session
+app.config['SESSION_TYPE'] = 'filesystem'
+app.secret_key = '3fH4uQS1pG4MMSm2xXk'
+
 
 from flask import redirect, url_for, render_template
 
@@ -25,6 +29,13 @@ def app_signin():
   return render_template(view)
 
 
+@app.route('/auth/signin')
+def auth_signin():
+  from util import markAsLoggedIn
+  markAsLoggedIn()
+  return 'Finish called auth_signin'
+
+
 @app.route('/home')
 def app_home():
   view = 'app/home.html'
@@ -33,5 +44,11 @@ def app_home():
 
 @app.route('/signout')
 def app_signout():
-  view = 'app/signout.html'
-  return render_template(view)
+  #unset session authInfo
+  #mark as logged out
+  from flask import session
+  if 'authInfo' in session:
+    del session['authInfo']
+
+  #redirect to app_home
+  return redirect(url_for('app_home'))

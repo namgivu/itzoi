@@ -13,7 +13,22 @@
 {% block onReadyJs %}
   <script>
   $('.btnSignIn').click(function(){
-    alert(122);
+      $.ajax({
+        url: '{{ url_for('auth_signin') }}',
+        type: "get",
+        data: {},
+        success: function(response) {
+          if (response.status == 0) { {#error occurred#}
+            console.error(response.message);
+          } else {
+            window.location.href = '{{ url_for('app_home') }}';
+          }
+        },
+        error: function(jqXHR, exception) {
+          //ajaxErrorHandler(jqXHR, exception);
+          console.error(exception);
+        }
+      });
   });
   </script>
 {% endblock %}

@@ -1,15 +1,19 @@
-def hasLoggedIn():
-  return False
-  return True
+from flask import session
 
+
+def hasLoggedIn():
+  return True if 'authInfo' in session else False
+
+
+def markAsLoggedIn(user=None):
+  session['authInfo'] = dict(
+    user = dict(username='admin', password='admin')
+  )
 
 #region others
 pass
 
 
-# def getAuthInfo():
-#   from app import session
-#   return session.get('authInfo') #get session key ignoring if not exists ref. http://stackoverflow.com/a/28926347/248616
 #
 #
 #
@@ -21,11 +25,6 @@ pass
 #     return None
 #
 #
-# def markAsLoggedIn(user):
-#   from app import session
-#   session['authInfo'] = dict(
-#     user = user.toDict()
-#   )
 #
 #
 # def requireValueFromRequest(request, field, allowEmpty=False):
