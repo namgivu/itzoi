@@ -5,4 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def app_index():
-  return 'hello'
+  view = 'app/index.html'
+
+  from flask import render_template
+  return render_template(view)
