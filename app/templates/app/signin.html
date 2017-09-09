@@ -1,5 +1,20 @@
 {% extends '_layout_/base.html' %}
 
 {% block main %}
+
   <div>app/signin</div>
+
+  <a href="#" class="btnSignIn">
+    <div>click to sign in</div>
+  </a>
+
 {% endblock main %}
+
+{% block onReadyJs %}
+  <script>
+  $('.btnSignIn').click(function(){
+    alert(122);
+  });
+  </script>
+{% endblock %}
+

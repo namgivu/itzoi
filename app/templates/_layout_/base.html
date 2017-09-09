@@ -30,5 +30,8 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{{ url_for('static', filename='3rd-party/bootstrap-3.3.7-dist/js/bootstrap.js') }}"></script>
 
+    {#page's jquery code here#}
+    {% block onReadyJs %}{% endblock %}
+
   </body>
 </html>
