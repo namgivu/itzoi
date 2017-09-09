@@ -29,3 +29,9 @@ def app_signin():
 def app_home():
   view = 'app/home.html'
   return render_template(view)
+
+
+@app.route('/signout')
+def app_signout():
+  view = 'app/signout.html'
+  return render_template(view)
