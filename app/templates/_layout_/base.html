@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link rel='stylesheet' type='text/css' href='{{ url_for('static', filename='3rd-party/bootstrap-3.3.7-dist/css/bootstrap.css') }}'/>
+
+  </head>
+
+  <body>
+    {#menu#}
+    {% include '_layout_/nav.html' %}
+
+    {#main#}
+    <div class="container-fluid mainBlock">
+      {% block main %}main block{% endblock %}
+    </div>
+
+    {#footer#}
+    {% include '_layout_/footer.html' %}
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{{ url_for('static', filename='3rd-party/jquery-1.12.4-min.js') }}"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{{ url_for('static', filename='3rd-party/bootstrap-3.3.7-dist/js/bootstrap.js') }}"></script>
+
+  </body>
+</html>
